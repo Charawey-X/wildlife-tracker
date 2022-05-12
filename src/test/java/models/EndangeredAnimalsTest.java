@@ -23,7 +23,7 @@ class EndangeredAnimalsTest {
     public void allInstancesAreSaved(){
         EndangeredAnimals testAnimal=setUpNewAnimal();
         testAnimal.save();
-        assertTrue(EndangeredAnimals.all().get(0).getHealth().equals(testAnimal.getHealth()));
+        assertEquals(EndangeredAnimals.all().get(0).getHealth(), testAnimal.getHealth());
     }
     @Test
     public void findByIdReturnsCorrectInfo(){
