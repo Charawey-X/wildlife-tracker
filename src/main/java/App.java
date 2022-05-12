@@ -83,13 +83,13 @@ public class App {
 
         //add ranger form
         get("/create/ranger", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "ranger-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //process form
         post("/create/ranger/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String badge_number = request.queryParams("phone_number");
             String phone_number = request.queryParams("phone_number");
@@ -106,7 +106,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         get("/view/ranger/sightings/:id", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             int idOfRanger = Integer.parseInt(request.params(":id"));
             Rangers foundRanger = Rangers.find(idOfRanger);
             try {
@@ -154,13 +154,13 @@ public class App {
 
         //view location details
         get("/view/locations", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             model.put("locations", Locations.all());
             return new ModelAndView(model, "location-view.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/view/location/sightings/:id", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
+            Map<String, Object> model = new HashMap<>();
             int idOfLocation = Integer.parseInt(request.params(":id"));
             Locations foundLocation = Locations.find(idOfLocation);
 
