@@ -57,7 +57,7 @@ class EndangeredAnimalsTest {
         try {
             testAnimal.save();
         }catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 }

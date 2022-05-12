@@ -3,7 +3,7 @@ import org.junit.Rule;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimalsTest {
 
@@ -85,7 +85,7 @@ public class AnimalsTest {
         try {
             testAnimal.save();
         }catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
         }
     }
 }
