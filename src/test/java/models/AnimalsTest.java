@@ -1,14 +1,18 @@
 package models;
 import org.junit.Rule;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class AnimalsTest {
 
     @Rule
     public  DatabaseRule databaseRule = new DatabaseRule();
+
+    private Animals setupAnimals() {
+        return new Animals("Zebra","adult","young");
+    }
 
     @Test
     public void Animal_instantiatesCorrectly() {
@@ -45,7 +49,7 @@ public class AnimalsTest {
         Animals testAnimal=setupAnimals();
         testAnimal.save();
         Animals foundAnimal= Animals.find(testAnimal.getId());
-        assertTrue(foundAnimal.getHealth().equals(testAnimal.getHealth()));
+        assertEquals(foundAnimal.getHealth(), testAnimal.getHealth());
     }
 
     @Test
@@ -62,7 +66,7 @@ public class AnimalsTest {
         Animals testAnimal=setupAnimals();
         testAnimal.save();
         testAnimal.delete();
-        assertEquals(null,Animals.find(testAnimal.getId()));
+        assertNull(Animals.find(testAnimal.getId()));
     }
     @Test
     public void deleteAllEntries() {
@@ -80,12 +84,8 @@ public class AnimalsTest {
         Animals testAnimal=setupAnimals();
         try {
             testAnimal.save();
-        }catch (IllegalArgumentException e){
-
+        }catch (IllegalArgumentException e) {
+            throw new RuntimeException(e);
         }
-    }
-
-    private Animals setupAnimals() {
-        return new Animals("Zebra","adult","young");
     }
 }
