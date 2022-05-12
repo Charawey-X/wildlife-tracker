@@ -13,7 +13,7 @@ public class Animals implements DataAccess {
     public String age;
     public String health;
     public int id;
-    public static final String CATEGORY= "normal";
+    public static final String CATEGORY= "not endangered";
     public Animals(String name, String age, String health) {
         this.name = name;
         this.type = CATEGORY;

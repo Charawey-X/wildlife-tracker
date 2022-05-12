@@ -1,6 +1,8 @@
 package models;
+import org.junit.After;
 import org.junit.Rule;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,6 +11,11 @@ public class AnimalsTest {
 
     @Rule
     public  DatabaseRule databaseRule = new DatabaseRule();
+
+    @AfterEach
+    void tearDown(){
+        Animals.deleteAll();
+    }
 
     private Animals setupAnimals() {
         return new Animals("Zebra","adult","young");
@@ -58,7 +65,7 @@ public class AnimalsTest {
         animals.save();
         Animals animals1 = setupAnimals();
         animals1.save();
-        assertEquals(Animals.all().size(),2);
+        assertEquals(2,Animals.all().size());
     }
 
     @Test
