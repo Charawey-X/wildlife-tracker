@@ -1,18 +1,23 @@
 package models;
 
 import org.junit.Rule;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.sql2o.Sql2oException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocationsTest {
     @Rule
     public DatabaseRule databaseRule=new DatabaseRule();
 
+    @AfterEach
+    void tearDown(){
+        Locations.deleteAll();
+    }
+
     @Test
     public void createInstanceOfLocationsClass() {
         Locations location=setupLocations();
-        assertEquals(true,location instanceof Locations);
+        assertTrue(location instanceof Locations);
     }
 
     @Test
@@ -27,8 +32,8 @@ class LocationsTest {
         Locations locations = new Locations("Zone c");
         try{
             location.save();
-            assertTrue(Locations.all().get(0).equals(location));
             locations.save();
+            assertEquals(2, Locations.all().size());
         }catch (IllegalArgumentException  ex){
             System.out.println(ex);
         }
@@ -41,7 +46,7 @@ class LocationsTest {
         newLocation.save();
         location.delete();
         newLocation.delete();
-        assertEquals(null,Locations.find(location.getId()));
+        assertNull(Locations.find(location.getId()));
     }
     @Test
     public void allSightingsAreReturnedForRanger() {

@@ -1,6 +1,7 @@
 package models;
 import database.*;
 import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,15 @@ public class Locations  implements DataAccess {
         }
     }
 
+    public static void deleteAll(){
+        try (Connection con=DB.sql2o.open()){
+            String sql = "DELETE FROM locations";
+            con.createQuery(sql)
+                    .executeUpdate();
+        }  catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
 
 
     public String getName() {
@@ -63,8 +73,6 @@ public class Locations  implements DataAccess {
                     .executeUpdate();
         }
     }
-
-
 
     public List<Sightings> getLocationSightings(){
         try (Connection con=DB.sql2o.open()){
