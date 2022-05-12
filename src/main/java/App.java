@@ -130,5 +130,100 @@ public class App {
 
             return new ModelAndView(model, "ranger-view.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //location
+
+        //location form
+        get("/create/location", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "location-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //process location
+        post("/create/location/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            Locations location = new Locations(name);
+            try {
+                location.save();
+            } catch (IllegalArgumentException e) {
+                System.out.println(e);
+            }
+            return new ModelAndView(model, "location-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //view location details
+        get("/view/locations", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("locations", Locations.all());
+            return new ModelAndView(model, "location-view.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/view/location/sightings/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfLocation = Integer.parseInt(request.params(":id"));
+            Locations foundLocation = Locations.find(idOfLocation);
+
+            try {
+                List<Sightings> sightings = foundLocation.getLocationSightings();
+                List<String> animals = new ArrayList<>();
+                List<String> types = new ArrayList<>();
+                for (Sightings sighting : sightings) {
+                    String animal_name = Animals.find(sighting.getAnimal_Id()).getName();
+                    String animal_type = Animals.find(sighting.getAnimal_Id()).getType();
+                    animals.add(animal_name);
+                    types.add(animal_type);
+                }
+                model.put("sightings", sightings);
+                model.put("animals", animals);
+                model.put("types", types);
+                model.put("locations", Locations.all());
+            }catch (IllegalArgumentException e){
+                response.redirect("/create/sighting");
+            }
+
+            return new ModelAndView(model, "location-view.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //sighting
+
+        //sighting form
+        get("/create/sighting", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("rangers", Rangers.all());
+            model.put("locations", Locations.all());
+            model.put("animals", Animals.all());
+            return new ModelAndView(model, "sighting-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //process form
+        post("/create/sighting/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int location_id = Integer.parseInt(request.queryParams("location"));
+            int ranger_id = Integer.parseInt(request.queryParams("ranger"));
+            int animal_id = Integer.parseInt(request.queryParams("animal"));
+
+            Sightings sighting = new Sightings(location_id, ranger_id, animal_id);
+            sighting.save();
+            return new ModelAndView(model, "sighting-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //view sighting details
+        get("/view/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Sightings> sightings = Sightings.all();
+            List<String> animals = new ArrayList<>();
+            List<String> types = new ArrayList<>();
+            for (Sightings sighting : sightings) {
+                String animal_name = Animals.find(sighting.getAnimal_Id()).getName();
+                String animal_type = Animals.find(sighting.getAnimal_Id()).getType();
+                animals.add(animal_name);
+                types.add(animal_type);
+            }
+            model.put("sightings", sightings);
+            model.put("animals", animals);
+            model.put("types", types);
+            return new ModelAndView(model, "sighting-view.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
