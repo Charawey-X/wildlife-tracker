@@ -33,7 +33,6 @@ public class Locations  implements DataAccess {
         }
     }
 
-
     public String getName() {
         return  name;
     }
