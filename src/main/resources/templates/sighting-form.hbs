@@ -28,9 +28,8 @@
                 <select class="custom-select" id="ranger" name="ranger">
                     <option selected>Choose...</option>
                     {{#if rangers}}
-
                         {{#each rangers as |r|}}
-                            <option name="animal" value={{r.id}}>{{r.name}}</option>
+                            <option name="ranger" value={{r.id}}>{{r.name}}</option>
                         {{/each}}
                     {{/if}}
                 </select>

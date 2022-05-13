@@ -64,7 +64,6 @@ public class Rangers implements DataAccess {
                     .executeAndFetch(Rangers.class);
 
         }
-
     }
 
     public void delete(){

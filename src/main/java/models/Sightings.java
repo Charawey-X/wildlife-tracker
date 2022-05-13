@@ -3,6 +3,7 @@ import database.*;
 import org.sql2o.Connection;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -38,8 +39,9 @@ public class Sightings implements DataAccess {
         return  animal_id;
     }
 
-    public Timestamp getTime() {
-        return time;
+    public String getTime() {
+        SimpleDateFormat simpleDateFormat =new SimpleDateFormat("E, MMM d 'at' hh:mm a");
+        return simpleDateFormat.format(time);
     }
 
     public static Sightings find(int id){

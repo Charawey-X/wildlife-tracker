@@ -31,7 +31,7 @@ nav a{
 }
 
 .dropdown-menu{
- background:#343a40;
+ background-color:rgba(0,0,0,0.5);
 
 }
 
@@ -48,7 +48,7 @@ nav a{
 }
 
 .form{
-    background-color:rgba(0,0,0,0.67);
+    background-color:rgba(0,0,0,0.5);
     width:50%;
     margin:auto;
     margin-top:50px;
@@ -67,7 +67,7 @@ hr{
 }
 
 .container-fluid{
-    background-color:rgba(0,0,0,0.67);
+    background-color:rgba(0,0,0,0.5);
 
 }
 
@@ -92,6 +92,23 @@ hr{
     margin-right:20px;
 }
 
-.views.sightings{
- background-color:rgba(0,0,0,0.67);
+.views .sightings{
+ background-color:rgba(0,0,0,0.5);
+}
+
+.card{
+  background-color:rgba(0,0,0,0.5) !important;
+}
+
+.card-body{
+ text-decoration:none;
+ border-radius:20px;
+}
+
+.card-body li{
+ list-style-type:none;
+}
+
+.card-text{
+ font-size:20px !important;
 }

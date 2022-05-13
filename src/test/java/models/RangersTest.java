@@ -13,6 +13,9 @@ public class RangersTest {
     @AfterEach
     void tearDown(){
         Rangers.deleteAll();
+        Locations.deleteAll();
+        Sightings.deleteAll();
+        Animals.deleteAll();
     }
 
     private Rangers setupNewRanger(){
@@ -63,12 +66,11 @@ public class RangersTest {
     @Test
     public void findById() {
         Rangers ranger= setupNewRanger();
-        Rangers otherRanger=new Rangers("Fisi","2537t841","0726108898");
+        Rangers otherRanger=new Rangers("Fisi","2537841","0726108898");
         ranger.save();
         otherRanger.save();
         Rangers foundRanger=Rangers.find(ranger.getId());
         assertEquals(foundRanger.getBadgeNumber(), ranger.getBadgeNumber());
-
     }
     @Test
     public void entriesAreDeleted() {
@@ -91,8 +93,8 @@ public class RangersTest {
             Sightings otherSighting = new Sightings(1,ranger.getId(),1);
             sighting.save();
             otherSighting.save();
-            assertEquals(ranger.getRangerSightings().get(0),sighting);
-            assertEquals(ranger.getRangerSightings().get(1),otherSighting);
+            assertEquals(sighting,ranger.getRangerSightings().get(0));
+            assertEquals(otherSighting,ranger.getRangerSightings().get(1));
         }catch (IllegalArgumentException e){
             System.out.println(e);
         }

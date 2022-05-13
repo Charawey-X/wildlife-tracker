@@ -91,10 +91,10 @@ public class App {
         post("/create/ranger/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
-            String badge_number = request.queryParams("phone_number");
+            String badge_number = request.queryParams("badge_number");
             String phone_number = request.queryParams("phone_number");
-            Rangers ranger = new Rangers(name, badge_number, phone_number);
-            ranger.save();
+            Rangers rangers = new Rangers(name, badge_number, phone_number);
+            rangers.save();
             return new ModelAndView(model, "ranger-form.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -190,8 +190,8 @@ public class App {
         //sighting form
         get("/create/sighting", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("rangers", Rangers.all());
             model.put("locations", Locations.all());
+            model.put("rangers", Rangers.all());
             model.put("animals", Animals.all());
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
