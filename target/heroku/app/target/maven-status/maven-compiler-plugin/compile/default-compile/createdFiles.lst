@@ -1,0 +1,8 @@
+models/Rangers.class
+App.class
+models/EndangeredAnimals.class
+models/Sightings.class
+database/DataAccess.class
+models/Animals.class
+models/Locations.class
+database/DB.class

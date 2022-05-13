@@ -1,0 +1,33 @@
+{{>layout.hbs}}
+
+<div class="views sightings">
+    <h1>Sightings</h1>
+    <hr>
+
+    <div class="row">
+
+        {{#if sightings}}
+            <div class="col-md-3">
+                <h3>Time</h3>
+                <hr>
+                {{#each sightings as |s|}}
+                    <h3>{{s.time}}</h3>
+                    <h3>{{s.animal_id}}</h3>
+                {{/each}}
+            </div>
+            <div class="col-md-3">
+                <h3>Animal</h3>
+                <hr>
+                {{#each animals as |a|}}
+                    <h3>{{a}}</h3>
+                {{/each}}
+
+            </div>
+
+        {{else}}
+            <h3>No sightings! Add some <a href="/create/sighting">here</a> </h3>
+
+        {{/if}}
+
+    </div>
+</div>
