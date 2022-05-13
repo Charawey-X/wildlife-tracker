@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Berkshire+Swash&family=Fredericka+the+Great&family=Henny+Penny&family=Poppins:wght@500&family=Rancho&family=Redressed&family=Rochester&family=Rye&family=Vast+Shadow&display=swap');
+
+body {
+    background-image: url("/images/welcome.jpg");
+    background-size: cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    color: blanchedalmond;
+    font-family:Poppins;
+}
+
+.navbar{
+background-color:rgba(0,0,0,0.5) !important;
+border-radius:20px !important;
+padding: 20px 20px;
+margin:20px;
+height:80px;
+}
+
+.title h1{
+font-weight:400;
+font-family:Fredericka the Great;
+font-style:normal;
+}
+
+nav a{
+    font-size:1.8em;
+    margin-right:30px;
+
+}
+
+.dropdown-menu{
+ background-color:rgba(0,0,0,0.5);
+
+}
+
+.dropdown-menu a{
+    color:blanchedalmond;
+}
+
+.title{
+    width:50%;
+    margin:auto;
+    letter-spacing:10px;
+    margin-top:270px;
+
+}
+
+.form{
+    background-color:rgba(0,0,0,0.5);
+    width:50%;
+    margin:auto;
+    margin-top:50px;
+    text-align:center;
+}
+
+hr{
+ background-color:blanchedalmond;
+}
+
+.form-group{
+    width:60%;
+    margin:auto;
+    margin-top:30px;
+    font-size:1.8em;
+}
+
+.container-fluid{
+    background-color:rgba(0,0,0,0.5);
+
+}
+
+.container-fluid p{
+    font-size:1.8em;
+}
+
+.container-fluid li{
+    font-size:1.8em;
+}
+
+.entries a{
+    margin-right:30px
+}
+
+.views.animals{
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.card{
+    margin-right:20px;
+}
+
+.views .sightings{
+ background-color:rgba(0,0,0,0.5);
+}
+
+.card{
+  background-color:rgba(0,0,0,0.5) !important;
+}
+
+.card-body{
+ text-decoration:none;
+ border-radius:20px;
+}
+
+.card-body li{
+ list-style-type:none;
+}
+
+.card-text{
+ font-size:20px !important;
+}

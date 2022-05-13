@@ -5,21 +5,32 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.apache.gradle</groupId>
-    <artifactId>wildlife_tracker</artifactId>
+    <artifactId>wildlife-tracker</artifactId>
     <version>1.0</version>
 
     <dependencies>
-        <!-- We need to list out ALL dependencies our project needs. If you have dependencies not listed here, but sure to add them -->
+        <!-- List ALL dependencies in your project. If you have dependencies in your project that are not listed here, but sure to add them -->
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
-            <version>2.6.0</version>
+            <version>2.9.3</version>
         </dependency>
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-template-handlebars</artifactId>
-            <version>2.5.5</version>
+            <version>2.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -63,7 +74,7 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
-                        <!-- Change this to YOUR main class name if different. Usually, it will be App. -->
+                        <!-- Change this to YOUR main class name (as specified in build.gradle) if different. Usually, it will be the class with the routes. -->
                         <manifest>
                             <mainClass>App</mainClass>
                         </manifest>
@@ -76,9 +87,10 @@
                 <version>2.0.3</version>
                 <configuration>
                     <jdkVersion>1.8</jdkVersion>
-                    <!-- Change this to YOUR application name! -->
+                    <!-- Change this to YOUR CHOSEN application name! -->
                     <appName>trackwildanimals</appName>
                     <processTypes>
+                        <!-- Switch the 'hero-squad' part to your project name or the entire file name to the dependencies jar file name in your target folder-->
                         <web>java -jar target/wildlife-tracker-1.0-jar-with-dependencies.jar</web>
                     </processTypes>
                 </configuration>
